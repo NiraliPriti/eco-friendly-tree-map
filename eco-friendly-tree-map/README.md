@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌲 Eco-Friendly Tree Map & Afforestation Planner
 
-## Getting Started
+An intelligent geospatial web platform that monitors live regional air pollution metrics, evaluates urban tree canopy deficit, and automatically computes targeted afforestation recommendations.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🌟 Key Features
+
+* **Live Atmospheric Telemetry:** Queries real-time Air Quality Index (AQI 1-5), PM2.5, PM10, NO₂, SO₂, O₃, CO, and relative humidity via OpenWeatherMap API.
+* **Afforestation Recommendations:** Dynamic calculation of required tree planting counts and climate/AQI-tolerant species (e.g. Neem, Banyan, Peepal, Bamboo, Ashoka).
+* **Dual Backend Support:** Fully integrated with both an **Express (Node.js)** backend and a **FastAPI (Python)** backend, with an interactive runtime switcher in the frontend.
+* **Interactive Map & Fallback Canvas:** Supports Mapbox GL dark satellite layers with graceful fallback to a radar geo-satellite canvas when no token is present.
+* **CSV Report Generation:** Download comprehensive ecological and afforestation reports with a single click.
+
+---
+
+## 📁 Repository Structure
+
+```
+├── app/                  # Next.js 16 (React 19) App Router frontend
+│   ├── page.tsx          # Interactive Dashboard, Map & Afforestation Planner
+│   ├── layout.tsx        # Root layout with Geist typography
+│   └── globals.css       # Tailwind CSS v4 styling
+├── backend/              # Express.js (Node.js) REST API
+│   ├── server.js         # Express server on port 5000
+│   ├── controllers/      # Pollution & afforestation controller
+│   ├── routes/           # /api/pollution routes
+│   └── .env              # Environment config (OPENWEATHER_API_KEY)
+├── fastapi_backend/      # FastAPI (Python) REST API
+│   ├── main.py           # High-performance ASGI server on port 8000
+│   └── .env              # Environment config (OPENWEATHER_API_KEY)
+├── public/               # Static assets & satellite imagery
+├── DEMO.md               # Quick-start demonstration and reviewer guide
+└── package.json          # Root scripts & dependencies
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ⚙️ Quick Start
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+See [DEMO.md](file:///c:/Users/neha1/Nirali-Project/eco-friendly-tree-map/eco-friendly-tree-map/DEMO.md) for full setup instructions, external API token details, and commands.
 
-## Learn More
+```bash
+# 1. Start Frontend
+npm run dev
 
-To learn more about Next.js, take a look at the following resources:
+# 2. Start Express Backend
+npm run server:express
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# 3. Start FastAPI Backend
+npm run server:fastapi
+```
